@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HelpRequestRepository extends CrudRepository<HelpRequest, Long>{
+    Iterable<HelpRequest> findAll();
     
 }
