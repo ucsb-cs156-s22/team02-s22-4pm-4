@@ -21,6 +21,6 @@ public class MenuItemReview {
     private Long itemId;
     private String reviewerEmail;
     private int stars;
-    private LocalDateTime localDateTime;
+    private LocalDateTime dateReviewed;
     private String comments;
 }
