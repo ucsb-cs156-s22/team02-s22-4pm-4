@@ -32,7 +32,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
     UCSBDiningCommonsMenuItemRepository ucsbDiningCommonsMenuItemRepository;
 
     @ApiOperation(value = "List all UCSB dining commons menu item")
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_USER')") 
     @GetMapping("/all")
     public Iterable<UCSBDiningCommonsMenuItem> allMenuItems() {
         Iterable<UCSBDiningCommonsMenuItem> menuItems = ucsbDiningCommonsMenuItemRepository.findAll();
