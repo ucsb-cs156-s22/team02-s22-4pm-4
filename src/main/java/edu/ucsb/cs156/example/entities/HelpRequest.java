@@ -1,7 +1,9 @@
 package edu.ucsb.cs156.example.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
 import java.time.LocalDateTime;
 
 import lombok.Data;
@@ -17,6 +19,9 @@ import lombok.Builder;
 @Entity(name = "helprequest")
 public class HelpRequest {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private long id;
     private String requesterEmail;
     private String teamId;
     private String tableOrBreakoutRoom; 
