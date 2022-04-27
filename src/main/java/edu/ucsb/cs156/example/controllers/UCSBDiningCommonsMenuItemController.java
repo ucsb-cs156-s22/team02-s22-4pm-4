@@ -30,7 +30,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
 
     @Autowired
     UCSBDiningCommonsMenuItemRepository ucsbDiningCommonsMenuItemRepository;
-
+ 
     @ApiOperation(value = "List all UCSB dining commons menu item")
     @PreAuthorize("hasRole('ROLE_USER')") 
     @GetMapping("/all")
