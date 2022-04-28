@@ -184,56 +184,53 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
                 assertEquals(expectedJson, responseString);
         }
 
-        // @WithMockUser(roles = { "ADMIN", "USER" })
-        // @Test
-        // public void admin_can_delete_a_date() throws Exception {
-        //         // arrange
+        @WithMockUser(roles = { "ADMIN", "USER" })
+        @Test
+        public void admin_can_delete_an_org() throws Exception {
+                // arrange
 
-        //         UCSBOrganizations portola = UCSBOrganizations.builder()
-        //                         .name("Portola")
-        //                         .code("portola")
-        //                         .hasSackMeal(true)
-        //                         .hasTakeOutMeal(true)
-        //                         .hasDiningCam(true)
-        //                         .latitude(34.417723)
-        //                         .longitude(-119.867427)
-        //                         .build();
+                UCSBOrganization org = UCSBOrganization.builder()
+                                .orgCode("ABC")
+                                .orgTranslationShort("AAA BBB CCC")
+                                .orgTranslation("AAAA BBBB CCCC")
+                                .inactive(false)
+                                .build();
 
-        //         when(ucsbOrganizationsRepository.findById(eq("portola"))).thenReturn(Optional.of(portola));
+                when(ucsbOrganizationRepository.findById(eq("ABC"))).thenReturn(Optional.of(org));
 
-        //         // act
-        //         MvcResult response = mockMvc.perform(
-        //                         delete("/api/ucsborganizations?code=portola")
-        //                                         .with(csrf()))
-        //                         .andExpect(status().isOk()).andReturn();
+                // act
+                MvcResult response = mockMvc.perform(
+                                delete("/api/ucsborganization?orgCode=ABC")
+                                                .with(csrf()))
+                                .andExpect(status().isOk()).andReturn();
 
-        //         // assert
-        //         verify(ucsbOrganizationsRepository, times(1)).findById("portola");
-        //         verify(ucsbOrganizationsRepository, times(1)).delete(any());
+                // assert
+                verify(ucsbOrganizationRepository, times(1)).findById("ABC");
+                verify(ucsbOrganizationRepository, times(1)).delete(any());
 
-        //         Map<String, Object> json = responseToJson(response);
-        //         assertEquals("UCSBOrganizations with id portola deleted", json.get("message"));
-        // }
+                Map<String, Object> json = responseToJson(response);
+                assertEquals("UCSBOrganization with id ABC deleted", json.get("message"));
+        }
 
-        // @WithMockUser(roles = { "ADMIN", "USER" })
-        // @Test
-        // public void admin_tries_to_delete_non_existant_commons_and_gets_right_error_message()
-        //                 throws Exception {
-        //         // arrange
+        @WithMockUser(roles = { "ADMIN", "USER" })
+        @Test
+        public void admin_tries_to_delete_non_existant_org_and_gets_right_error_message()
+                        throws Exception {
+                // arrange
 
-        //         when(ucsbOrganizationsRepository.findById(eq("munger-hall"))).thenReturn(Optional.empty());
+                when(ucsbOrganizationRepository.findById(eq("ABC"))).thenReturn(Optional.empty());
 
-        //         // act
-        //         MvcResult response = mockMvc.perform(
-        //                         delete("/api/ucsborganizations?code=munger-hall")
-        //                                         .with(csrf()))
-        //                         .andExpect(status().isNotFound()).andReturn();
+                // act
+                MvcResult response = mockMvc.perform(
+                                delete("/api/ucsborganization?orgCode=ABC")
+                                                .with(csrf()))
+                                .andExpect(status().isNotFound()).andReturn();
 
-        //         // assert
-        //         verify(ucsbOrganizationsRepository, times(1)).findById("munger-hall");
-        //         Map<String, Object> json = responseToJson(response);
-        //         assertEquals("UCSBOrganizations with id munger-hall not found", json.get("message"));
-        // }
+                // assert
+                verify(ucsbOrganizationRepository, times(1)).findById("ABC");
+                Map<String, Object> json = responseToJson(response);
+                assertEquals("UCSBOrganization with id ABC not found", json.get("message"));
+        }
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
