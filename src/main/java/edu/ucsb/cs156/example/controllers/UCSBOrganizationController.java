@@ -72,17 +72,17 @@ public class UCSBOrganizationController extends ApiController {
         return savedOrgs;
     }
 
-    // @ApiOperation(value = "Delete a UCSBDiningCommons")
-    // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    // @DeleteMapping("")
-    // public Object deleteCommons(
-    //         @ApiParam("code") @RequestParam String code) {
-    //     UCSBDiningCommons commons = ucsbDiningCommonsRepository.findById(code)
-    //             .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommons.class, code));
+    @ApiOperation(value = "Delete a UCSBOrganizations")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("")
+    public Object deleteCommons(
+            @ApiParam("orgCode") @RequestParam String orgCode) {
+        UCSBOrganization org = ucsbOrganizationRepository.findById(orgCode)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBOrganization.class, orgCode));
 
-    //     ucsbDiningCommonsRepository.delete(commons);
-    //     return genericMessage("UCSBDiningCommons with id %s deleted".formatted(code));
-    // }
+        ucsbOrganizationRepository.delete(org);
+        return genericMessage("UCSBOrganization with id %s deleted".formatted(orgCode));
+    }
 
     @ApiOperation(value = "Update a single org")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
