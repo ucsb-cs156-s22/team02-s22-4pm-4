@@ -38,7 +38,6 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
         Iterable<UCSBDiningCommonsMenuItem> menuItems = ucsbDiningCommonsMenuItemRepository.findAll();
         return menuItems;
     }
-
     @ApiOperation(value = "Get a single menu item")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
