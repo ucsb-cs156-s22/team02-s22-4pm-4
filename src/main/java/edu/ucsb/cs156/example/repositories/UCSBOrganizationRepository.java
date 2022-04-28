@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UCSBOrganizationRepository extends CrudRepository<UCSBOrganization, Long> {
+public interface UCSBOrganizationRepository extends CrudRepository<UCSBOrganization, String> {
 }
