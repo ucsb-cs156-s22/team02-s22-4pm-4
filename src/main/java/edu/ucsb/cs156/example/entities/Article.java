@@ -1,6 +1,6 @@
 package edu.ucsb.cs156.example.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
@@ -26,5 +26,5 @@ public class Article {
   private String url;  
   private String explanation;
   private String email;
-  private LocalDateTime dateAdded;
+  private LocalDate dateAdded;
 }
