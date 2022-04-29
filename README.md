@@ -4,6 +4,10 @@ TODO: Add a link to the deployed Heroku app for your team here, e.g.
 
 * <https://s22-7pm-3-team02.herokuapp.com>
 
+# CODECOV
+
+[![codecov](https://codecov.io/gh/ucsb-cs156-s22/team02-s22-4pm-4/branch/master/graph/badge.svg?token=VXIqvdABOu)](https://codecov.io/gh/ucsb-cs156-s22/team02-s22-4pm-4)
+
 # Setup before running application
 
 Before running the application for the first time,
