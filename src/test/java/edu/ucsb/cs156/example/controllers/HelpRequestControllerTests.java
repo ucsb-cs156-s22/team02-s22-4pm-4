@@ -92,7 +92,7 @@ public class HelpRequestControllerTests extends ControllerTestCase{
                     .tableOrBreakoutRoom("table-4")
                     .requestTime(now)
                     .explanation("help-with-team02")
-                    .solved(false)
+                    .solved(true)
                     .build();
         when(helpRequestRepository.findById(eq(1L))).thenReturn(Optional.of(request));
 
@@ -182,14 +182,14 @@ public class HelpRequestControllerTests extends ControllerTestCase{
                     .tableOrBreakoutRoom("table-4")
                     .requestTime(ldt2)
                     .explanation("help-with-team02")
-                    .solved(false)
+                    .solved(true)
                     .build();
         
         when(helpRequestRepository.save(eq(request))).thenReturn(request); 
 
         //act
         MvcResult response = mockMvc.perform(
-                        post("/api/helprequest/post?requesterEmail=victoriareed@ucsb.edu&teamId=s22-4pm-4&tableOrBreakoutRoom=table-4&requestTime=2022-03-11T00:00:00&explanation=help-with-team02&solved=false")
+                        post("/api/helprequest/post?requesterEmail=victoriareed@ucsb.edu&teamId=s22-4pm-4&tableOrBreakoutRoom=table-4&requestTime=2022-03-11T00:00:00&explanation=help-with-team02&solved=true")
                         .with(csrf()))
                         .andExpect(status().isOk()).andReturn(); 
         
@@ -257,6 +257,7 @@ public class HelpRequestControllerTests extends ControllerTestCase{
                 // arrange
 
                 LocalDateTime ldt2 = LocalDateTime.parse("2022-03-11T00:00:00");
+                LocalDateTime ldt3 = LocalDateTime.parse("2022-04-11T00:00:00");
                 HelpRequest requestOrig = HelpRequest.builder()
                     .requesterEmail("victoriareed@ucsb.edu")
                     .teamId("s22-4pm-4")
@@ -268,11 +269,11 @@ public class HelpRequestControllerTests extends ControllerTestCase{
 
                 HelpRequest requestEdited = HelpRequest.builder()
                                 .requesterEmail("victoria@ucsb.edu")
-                                .teamId("s22-4pm-4")
+                                .teamId("s22-4pm")
                                 .tableOrBreakoutRoom("table-44")
-                                .requestTime(ldt2)
-                                .explanation("help-with-team02")
-                                .solved(false)
+                                .requestTime(ldt3)
+                                .explanation("help-team02")
+                                .solved(true)
                                 .build();
 
                 String requestBody = mapper.writeValueAsString(requestEdited);
