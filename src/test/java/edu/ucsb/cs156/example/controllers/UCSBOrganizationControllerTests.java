@@ -280,7 +280,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
                                 .orgCode("ABC")
                                 .orgTranslationShort("AAA BBB CCC")
                                 .orgTranslation("AAAA BBBB CCCC")
-                                .inactive(false)
+                                .inactive(true)
                                 .build();
 
                 String requestBody = mapper.writeValueAsString(orgEdited);
