@@ -16,7 +16,7 @@ import lombok.Builder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "article")
+@Entity(name = "Article")
 public class Article {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
