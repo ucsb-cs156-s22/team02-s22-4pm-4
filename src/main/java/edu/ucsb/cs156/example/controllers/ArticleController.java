@@ -87,7 +87,7 @@ public class ArticleController extends ApiController {
                     .orElseThrow(() -> new EntityNotFoundException(Article.class, id));
                 
             articleRepository.delete(article);
-            return genericMessage("article with id %s deleted".formatted(id));
+            return genericMessage("Article with id %s deleted".formatted(id));
         }
 
         @ApiOperation(value = "Update a single article")
