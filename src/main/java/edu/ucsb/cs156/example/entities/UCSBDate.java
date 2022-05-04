@@ -21,7 +21,6 @@ public class UCSBDate {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-
   private String quarterYYYYQ;
   private String name;  
   private LocalDateTime localDateTime;
