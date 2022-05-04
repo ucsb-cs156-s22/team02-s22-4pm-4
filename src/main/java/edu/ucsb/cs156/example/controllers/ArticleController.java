@@ -59,6 +59,7 @@ public class ArticleController extends ApiController {
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("/post")
     public Article postArticle(
+            @ApiParam("title") @RequestParam String title,
             @ApiParam("url") @RequestParam String url,
             @ApiParam("explanation") @RequestParam String explanation,
             @ApiParam("email") @RequestParam String email,
@@ -68,6 +69,7 @@ public class ArticleController extends ApiController {
         log.info("dateAdded={}", dateAdded);
 
         Article article = new Article();
+        article.setTitle(title);
         article.setUrl(url);
         article.setExplanation(explanation);
         article.setEmail(email);
@@ -100,6 +102,7 @@ public class ArticleController extends ApiController {
             Article article = articleRepository.findById(id)
                     .orElseThrow(() -> new EntityNotFoundException(Article.class, id));
             
+            article.setTitle(incoming.getTitle());
             article.setUrl(incoming.getUrl());
             article.setExplanation(incoming.getExplanation());
             article.setEmail(incoming.getEmail());

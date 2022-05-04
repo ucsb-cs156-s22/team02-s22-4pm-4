@@ -92,6 +92,7 @@ public class ArticleControllerTests extends ControllerTestCase {
                             .email("asd@ucsb.edu")
                             .explanation("no")
                             .url("no")
+                            .title("no")
                             .build();
 
             when(articleRepository.findById(eq(7L))).thenReturn(Optional.of(article));
@@ -139,6 +140,7 @@ public class ArticleControllerTests extends ControllerTestCase {
                             .email("asd@ucsb.edu")
                             .explanation("no")
                             .url("no")
+                            .title("no")
                             .build();
 
             LocalDate ld2 = LocalDate.parse("2022-01-03");
@@ -148,6 +150,7 @@ public class ArticleControllerTests extends ControllerTestCase {
                             .email("asdd@ucsb.edu")
                             .explanation("no")
                             .url("no")
+                            .title("no")
                             .build();
 
             ArrayList<Article> expectedArticles = new ArrayList<>();
@@ -179,13 +182,14 @@ public class ArticleControllerTests extends ControllerTestCase {
                             .email("asd@ucsb.edu")
                             .explanation("no")
                             .url("no")
+                            .title("no")
                             .build();
 
             when(articleRepository.save(eq(article))).thenReturn(article);
 
             // act
             MvcResult response = mockMvc.perform(
-                            post("/api/Article/post?dateAdded=2022-01-03&email=asd@ucsb.edu&explanation=no&url=no")
+                            post("/api/Article/post?dateAdded=2022-01-03&email=asd@ucsb.edu&explanation=no&url=no&title=no")
                                             .with(csrf()))
                             .andExpect(status().isOk()).andReturn();
 
@@ -208,6 +212,7 @@ public class ArticleControllerTests extends ControllerTestCase {
                             .email("asd@ucsb.edu")
                             .explanation("no")
                             .url("no")
+                            .title("no")
                             .build();
 
             when(articleRepository.findById(eq(15L))).thenReturn(Optional.of(article));
@@ -259,6 +264,7 @@ public class ArticleControllerTests extends ControllerTestCase {
                             .email("asd@ucsb.edu")
                             .explanation("no")
                             .url("no")
+                            .title("no")
                             .build();
 
             Article articleEdited =Article.builder()
@@ -266,6 +272,7 @@ public class ArticleControllerTests extends ControllerTestCase {
                             .email("dsa@ucsb.edu")
                             .explanation("yes")
                             .url("yes")
+                            .title("no")
                             .build();
 
             String requestBody = mapper.writeValueAsString(articleEdited);
@@ -300,6 +307,7 @@ public class ArticleControllerTests extends ControllerTestCase {
                             .email("asd@ucsb.edu")
                             .explanation("no")
                             .url("no")
+                            .title("no")
                             .build();
 
             String requestBody = mapper.writeValueAsString(article);
